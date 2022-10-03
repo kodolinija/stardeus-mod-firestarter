@@ -1,0 +1,9 @@
+{
+    "Id" : "Firestarter",
+    "SteamWorkshop" : false,
+    "Name" : "Firestarter",
+    "Description" : "Starts Fires Randomly",
+    "ModVersion" : "1.0.0",
+    "GameVersion" : "0.6.96",
+    "Dependencies" : [ "Core" ]
+}
