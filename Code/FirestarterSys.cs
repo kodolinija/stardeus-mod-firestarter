@@ -51,10 +51,15 @@ namespace ModFirestarter.Systems {
             var allFlamables = S.Components.AllByType<FlammableComp>();
             candidates.Clear();
             foreach (var flamable in allFlamables) {
-                if (!flamable.IsConstructed) { continue; }
+                // Skip unbuilt tiles
+                if (flamable.Entity is Tile t && !t.IsConstructed) {
+                    continue;
+                }
+                // Skip floors and walls
                 if (flamable.Entity.Definition.LayerId < WorldLayer.Objects) {
                     continue;
                 }
+                // Skip areas with no oxygen (not fun to start fires there)
                 if (S.Oxygen.Get(flamable.Entity.PosIdx) > Consts.MinOxygen) {
                     candidates.Add(flamable as FlammableComp);
                 }
